@@ -5,4 +5,5 @@ authors = ["Anatoly Torchinsky <link13@gmail..com>"]
 
 [dependencies]
 
-sdl2 = "0.13"
+sdl2 = "0.25.0"
+sdl2_image = "0.25.0"

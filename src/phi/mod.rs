@@ -1,4 +1,4 @@
-extern crate sdl2;
+// extern crate sdl2;
 
 #[macro_use]
 mod events;
@@ -26,6 +26,13 @@ pub struct Phi<'window> {
 }
 
 impl<'window> Phi<'window> {
+    fn new(events: Events, renderer: Renderer<'window>) -> Phi<'window> {
+        Phi {
+            events: events,
+            renderer: renderer,
+        }
+    }
+
 	pub fn output_size(&self) -> (f64, f64) {
 		let (w, h) = self.renderer.output_size().unwrap();
 		(w as f64, h as f64)
@@ -49,6 +56,7 @@ where F: Fn(&mut Phi) -> Box<View> {
     let sdl_context = sdl2::init().unwrap();
     let video = sdl_context.video().unwrap();
     let mut timer = sdl_context.timer().unwrap();
+    let _image_context = ::sdl2_image::init(::sdl2_image::INIT_PNG).unwrap();
 
     let window = video.window(title, 800, 600)
         .position_centered().opengl().resizable()
