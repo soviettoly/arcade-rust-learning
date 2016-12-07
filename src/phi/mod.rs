@@ -62,7 +62,7 @@ where F: Fn(&mut Phi) -> Box<View> {
         .position_centered().opengl().resizable()
         .build().unwrap();
 
-    let mut context = Phi {
+    let mut context = Phi::new{
         events: Events::new(sdl_context.event_pump().unwrap()),
         renderer: window.renderer().accelerated()
             .build().unwrap(),
